@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio DS</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <!-- and it's easy to individually load additional languages -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Outfit:wght@100..900&display=swap');
+  </style>
+
+</head>
+
+<body>
+
+  <div class="banner">
+    <h1 class="me"> mapi </h1>
+  </div>
+
+
+  <div class="cabecalho">
+
+    <ul class="cabecalho_links">
+
+
+      <div class="cabecalho_item">
+        <li id="home"><a href="#pg_home">Home</a></li>
+      </div>
+
+      <div class="cabecalho_item">
+        <li><a href="#pg_sobre">Sobre mim</a></li>
+        <li><a href="#pg_codigos">Códigos</a></li>
+        <li><a href="#pg_contato">Contato</a></li>
+      </div>
+    </ul>
+  </div>
+
+  <section class="main" id="pg_home">
+
+    <div class="texto_main">
+
+      <h2 class="titulo">
+        Portfolio </h2>
+      <p class="texto_padrao">Estudante ETEC atrás de profissionalização. </p>
+
+      <img src="./assets/icon.jpg" class="img_me">
+    </div>
+  </section>
+
+
+  <section class="sobre" id="pg_sobre">
+
+    <div class="coluna_sobre">
+      <h2 class="subtitulo">
+        Sobre mim:
+      </h2>
+      <p class="texto_padrao">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minima dolorem consectetur odio.
+        Voluptates quae architecto, commodi ea ut pariatur totam ipsum ducimus amet omnis quas hic itaque
+        dolorum suscipit. </p>
+      <p class="texto_padrao"> Acesse meu currículo:</p>
+      <button class="botao_sobre"><a class="texto_padrao" href="#" target="_blank"> Currículo </a> </button>
+    </div>
+
+    <div class="coluna_sobre">
+      <h2 class="subtitulo">
+        Tecnologias:
+      </h2>
+      <p class="texto_padrao">
+        Dart é uma linguagem de programação multiplataforma e multiparadigma, criada pelo Google em 2011.
+        Ela é utilizada para desenvolver aplicativos para web, mobile, desktop e servidor.
+      </p>
+      <p class="texto_padrao"> Acesse o debugger de Dart para testar os códigos:</p>
+      <button class="botao_sobre"><a class="texto_padrao" href="https://dartpad.dev/" target="_blank"> Dart</a></button>
+    </div>
+  </section>
+
+
+  <section class="codigos" id="pg_codigos">
+
+    <div class="codigos_row">
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Códigos:</h2>
+
+        <div class="code">
+          <h3 class="sub_subtitulo"> Função conversor</h3>
+          <pre><code>
+class Relogio {
+  //classe
+  double _h1 = 0; //variáveis
+  double? _r;
+
+  double get h1 => _h1; //getter
+  set h1(double novoh1) => _h1 = novoh1; //setter
+
+  double? get r => _r;
+
+  void minutos() {
+    //método de conversão de horas em minutos
+    this._r = this._h1 * 60;
+  }
+
+  void segundos() {
+    //método de conversão de horas em segundos
+    this._r = this._h1 * 3600;
+  }
+}
+
+void main() {
+  var relogio = Relogio();
+
+  relogio.h1 = 4;
+
+  relogio.minutos();
+  print("${relogio.h1} horas equivale a ${relogio.r} minutos");
+
+  relogio.segundos();
+  print("${relogio.h1} horas equivale a ${relogio.r} segundos");
+}
+                </code></pre>
+        </div>
+      </div>
+
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Metodologia:</h2>
+        <p class="texto_code">
+          Este código implementa uma classe chamada Relogio, que realiza conversões de tempo, transformando
+          horas em minutos ou segundos. A classe encapsula os dados utilizando variáveis privadas (_h1 e _r) e
+          acessa essas informações através de getters e setters. Os métodos minutos() e segundos() calculam os
+          equivalentes de horas em minutos e segundos, respectivamente, armazenando os resultados na variável
+          _r. No método main, um objeto da classe é instanciado, o valor de horas é definido e os métodos são
+          chamados para realizar as conversões, exibindo os resultados no console.
+        </p>
+      </div>
+    </div>
+
+
+    <div class="codigos_row">
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Códigos:</h2>
+
+        <div class="code">
+          <h3 class="sub_subtitulo"> Classe abstrata</h3>
+          <pre><code>
+abstract class Funcionario {
+  void salario();
+}
+
+class Gerente extends Funcionario {
+  late double horas, valorHora;
+
+  void salario() {
+    var aPagar = horas * valorHora;
+    print('O valor a ser pago ao gerente é de R\$: $aPagar,00');
+  }
+}
+
+class Assistente extends Funcionario {
+  late double horas, valorHora;
+
+  void salario() {
+    var aPagar = horas * valorHora;
+    print('O valor a ser pago ao assistente é de R\$: $aPagar,00');
+  }
+}
+
+void main() {
+  var colaborador1 = Gerente();
+  colaborador1.horas = 220;
+  colaborador1.valorHora = 20;
+  colaborador1.salario();
+
+  var colaborador2 = Assistente();
+  colaborador2.horas = 220;
+  colaborador2.valorHora = 10;
+  colaborador2.salario();
+}
+            </code></pre>
+        </div>
+      </div>
+
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Metodologia:</h2>
+        <p class="texto_code">
+          Este código apresenta uma abordagem de herança em programação orientada a objetos. A classe abstrata
+          Funcionario define o método salario() como uma interface que deve ser implementada pelas classes
+          derivadas. As classes concretas Gerente e Assistente estendem a classe abstrata, implementando o
+          método salario() para calcular e exibir o pagamento correspondente ao número de horas trabalhadas
+          multiplicado pelo valor por hora. No método main, são criadas instâncias de Gerente e Assistente, os
+          valores das horas e do valor por hora são atribuídos, e o método salario() é chamado, exibindo os
+          respectivos pagamentos no console. Este código demonstra o uso de classes abstratas, herança e
+          polimorfismo.
+        </p>
+      </div>
+    </div>
+
+
+    <div class="codigos_row">
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Códigos:</h2>
+
+        <div class="code">
+          <h3 class="sub_subtitulo"> Construtor</h3>
+          <pre><code>
+// Definição da classe Produto
+class Produto {
+  // Atributos da classe
+  String nome;
+  double preco;
+  int quantidade;
+
+  // Construtor padrão
+  Produto(this.nome, this.preco, this.quantidade);
+
+  // Construtor nomeado para inicialização com preço padrão
+  Produto.comPrecoPadrao(this.nome, this.quantidade)
+    : preco = 10.0; // Define um preço padrão
+
+  Produto.comNomePadrao(this.preco, this.quantidade) : nome = "Lápis";
+  // Método para exibir informações do produto
+
+  void exibirInformacoes() {
+    print("Nome: $nome");
+    print("Preço: R\$ ${preco.toStringAsFixed(2)}");
+    print("Quantidade: $quantidade");
+  }
+
+  // Método para calcular o valor total do estoque do produto
+  double calcularValorEstoque() {
+    return preco * quantidade;
+  }
+}
+
+void main() {
+  // Criando objetos da classe Produto usando diferentes construtores
+  Produto produto1 = Produto("Laptop", 2999.90, 5);
+  Produto produto2 = Produto.comPrecoPadrao("Caderno", 20);
+  Produto produto3 = Produto.comNomePadrao(1.50, 30);
+
+  // Usando métodos dos objetos
+  produto1.exibirInformacoes();
+  print(
+    "Valor do estoque: R\$ ${produto1.calcularValorEstoque().toStringAsFixed(2)}\n",
+  );
+
+  produto2.exibirInformacoes();
+  print(
+    "Valor do estoque: R\$ ${produto2.calcularValorEstoque().toStringAsFixed(2)}\n",
+  );
+
+  produto3.exibirInformacoes();
+  print(
+    "Valor do estoque: R\$ ${produto3.calcularValorEstoque().toStringAsFixed(2)}\n",
+  );
+}
+        </code></pre>
+        </div>
+      </div>
+
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Metodologia:</h2>
+        <p class="texto_code">
+          Este código utiliza a programação orientada a objetos (POO) para modelar um sistema de gerenciamento de
+          produtos. A classe Produto encapsula atributos como nome, preco e quantidade, além de fornecer construtores
+          para diferentes cenários de inicialização. Métodos como exibirInformacoes e calcularValorEstoque são
+          responsáveis por exibir os detalhes do produto e calcular o valor total do estoque, respectivamente. A
+          flexibilidade nos construtores permite criar objetos com valores padrão para atributos, promovendo
+          reutilização e simplicidade. No método principal, vários objetos são instanciados, demonstrando a
+          funcionalidade da classe e destacando a eficiência da abordagem.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer id="pg_contato">
+      <div class="coluna_footer_um">
+        <p class="texto_padrao"><b>Contato:</b></p>
+        <p class="texto_padrao"><a href="#">Github</a> </p>
+        <p class="texto_padrao">ana.faria.2605@gmail.com</p>
+      </div>
+
+      <div class="coluna_footer_dois">
+        <p class="texto_padrao">Feito por: <b>Ana Júlia Faria </b></p>
+        <p class="texto_padrao">2° Módulo desenvolvimento de sistemas</p>
+        <p class="texto_padrao">ETEC Ilza Nascimento Pintus</p>
+      </div>
+
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+*{ /*resetando as config*/
+    text-decoration: none;
+    margin: 0;
+    padding:0;
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+
+/*FONTS*/
+
+.outfit-text {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+.bodoni-moda-title {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+
+
+/* CORES */
+
+:root {
+    --cor-escura: rgb(24,44,37);
+    --verde-base: #306844;
+    --cor-amarelo: #d2c49e;
+    --cor-footer: #1c3d24;
+    --cor-link: #417e32;
+
+}
+
+
+body{
+    background-color: var(--cor-escura);
+}
+
+
+/*BANNER */
+.banner {
+    background-color: var(--cor-escura);
+    height: 50px;
+    text-align: center;
+
+}
+.me {
+    color: white;
+}
+
+
+/*CABEÇALHO */
+
+.cabecalho {
+    /* margin: 10px; Espaçamento */
+    position: sticky;
+    top: 24px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 10%;
+}
+
+.cabecalho_links {
+    display: flex; /*Coloca os links em fileira*/
+    justify-content: space-between; /*Puxa os links pra direita*/
+    border: 2px solid var(--cor-escura); /*Cria a borda*/
+    border-radius: 20px; 
+    padding: 0 30px; /*Cria o espaçamento do link da "parede"*/
+    background-color: #d2c49e; /*cor do fundo*/
+}
+
+.cabecalho_item {
+    display: flex;   /* separa a 'home' dos outros links */
+}
+
+.cabecalho_links li {
+    margin: 10px; /*Margem das bordas dos links */
+    color: white;
+    font-family: "Outfit", sans-serif;
+}
+
+.cabecalho_item a {
+    color: var(--cor-link);
+    text-decoration: none;
+    
+}
+
+.cabecalho_item a:hover {
+    color: #12301d;
+    transition: 0.5s all;
+    text-decoration: dotted;
+}
+
+
+/*MAIN */
+
+.main{
+
+    column-count: 2;
+    column-width: 70%;
+    column-gap: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    height: 75vh;
+
+
+    background: rgb(40,70,54);
+    background: linear-gradient(103deg, rgba(40,70,54,1) 31%, rgba(58,131,84,1) 100%);
+}
+
+.img_me {
+    border-radius: 50%;
+    margin: 30px;
+}
+
+.titulo {
+    font-size: larger;
+    font-family: "Bodoni Moda", serif;
+    font-size: 70px;
+    color: white;
+}
+
+.texto_padrao {
+    font-family: "Outfit", sans-serif;
+    color: white;
+}
+
+.texto_main {
+    margin: 130px;
+}
+
+/* SOBRE MIM */
+
+.subtitulo {
+    font-size: medium;
+    font-family: "Bodoni Moda", serif;
+    font-size: 40px;
+    color: white;
+}
+
+.sobre {
+    background-color: #306844;
+    padding: 40px;
+
+    column-count: 2;
+    column-width: 60%;
+    column-gap: 30px;
+    display: flex;
+}
+
+.coluna_sobre {
+    flex: 50%;
+    padding: 40px;
+}
+
+.coluna_sobre button {
+    align-items: center;
+    justify-content: center;
+}
+
+.botao_sobre {
+    color: white;
+    background-color: rgb(91, 185, 124);
+    border-radius: 10%;
+    margin: 10px;
+    padding: 10px;
+    text-decoration: none;
+    border: none;
+    width: 90px;
+    height: auto;
+    cursor: pointer;
+}
+.botao_sobre a {
+    color: white;
+    font-size: 16px;
+}
+
+.botao_sobre:hover {
+    width: 100px;
+    height: auto;
+    transition: 0.5s all;
+}
+
+/*CÓDIGOS*/
+
+.codigos {
+    margin: 20px;
+    height: auto; 
+}
+
+.codigos_row {
+    column-count: 2;
+    column-width: 50%;
+    column-gap: 30px;
+
+    display: flex;
+}
+
+.coluna_codigos {
+    flex: 50%;
+    padding: 40px;
+
+}
+
+.code {
+    background-color: #474747;
+    border-radius: 10px;
+    color: white;
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    height: 320px;
+    overflow-y: auto;
+
+}
+
+.texto_code {
+    font-family: "Outfit", sans-serif;
+    color: white;
+    font-size: 17px;
+}
+
+.sub_subtitulo {
+    font-family: 'Courier New', Courier, monospace;
+    color: #5fd169;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    column-count: 2;
+    column-width: 20%;
+    background-color:var(--cor-footer);
+    height: auto;
+
+    display: flex;
+
+}
+
+.coluna_footer_um {
+    flex: 20%;
+    padding: 40px;
+}
+
+.coluna_footer_dois {
+    flex: 80%;
+    padding: 40px;
+}
+
+.texto_padrao a {
+    color: white;
+}
+
+.texto_padrao a:hover{
+    color: #5aa775;
+    transition: 0.5s all;
+}
+
+.texto_padrao b {
+    color: #569e56;
+}
