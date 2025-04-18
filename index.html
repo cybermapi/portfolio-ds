@@ -8,10 +8,6 @@
   <link rel="stylesheet" href="style.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
-  <!-- and it's easy to individually load additional languages -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
-
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Outfit:wght@100..900&display=swap');
@@ -63,8 +59,10 @@
         Sobre mim:
       </h2>
       <p class="texto_padrao">
-        Meu nome é Ana, tenho 18 anos, e cresci com esse interesse em áreas da tecnologia, sempre foi um ramo que considerei como carreira. Então cá estou eu em busca de uma profissionalização.
-      Além de estar aprendendo linguagens como dart, python e react, estou aprofundando meu conhecimento em html e css, e procuro aprender java</p>
+        Meu nome é Ana, tenho 18 anos, e cresci com esse interesse em áreas da tecnologia, sempre foi um ramo que
+        considerei como carreira. Então cá estou eu em busca de uma profissionalização. Além de estar aprendendo
+        linguagens como dart, python e react, estou aprofundando meu conhecimento em html e css, e procuro aprender java
+        Acesse meu currículo:</p>
       <p class="texto_padrao"> Acesse meu currículo:</p>
       <button class="botao_sobre"><a class="texto_padrao" href="#" target="_blank"> Currículo </a> </button>
     </div>
@@ -141,6 +139,7 @@ void main() {
       </div>
     </div>
 
+    <!-- --------------------------------------------------------------------------- -->
 
     <div class="codigos_row">
       <div class="coluna_codigos">
@@ -201,6 +200,7 @@ void main() {
       </div>
     </div>
 
+    <!-- --------------------------------------------------------------------------- -->
 
     <div class="codigos_row">
       <div class="coluna_codigos">
@@ -278,20 +278,211 @@ void main() {
       </div>
     </div>
 
+    <!-- --------------------------------------------------------------------------- -->
+    <div class="codigos_row">
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Códigos:</h2>
+
+        <div class="code">
+          <h3 class="sub_subtitulo"> IMC</h3>
+          <pre><code>
+class Pessoa {
+  ///variáveis
+  late double _peso;
+  late double _altura;
+  late double _imc;
+
+  ///getter e setter
+  double get peso => _peso;
+  set peso(double nPeso) => _peso = nPeso;
+
+  double get altura => _altura;
+  set altura(double nAltura) => _altura = nAltura;
+
+  double get imc => _imc;
+  set imc(double nImc) => _imc - nImc;
+
+  ///método calcular
+  void calcular_imc() {
+    this._imc = this._peso / (this._altura * this._altura);
+  }
+
+  ///método analisar
+  void analisar_imc() {
+    if (imc < 18.5) {
+      print("Abaixo do peso");
+    } else if (18.5 <= imc && imc < 24.9) {
+      print("Peso normal");
+    } else if (25 <= imc && imc < 29.9) {
+      print("Sobrepeso");
+    } else {
+      print("Obesidade");
+    }
+  }
+}
+
+void main() {
+  var imc = Pessoa();
+  imc._altura = 1.75;
+  imc._peso = 55;
+
+  imc.calcular_imc();
+  imc.analisar_imc();
+  
+   imc._altura = 1.40;
+  imc._peso = 55;
+
+  imc.calcular_imc();
+  imc.analisar_imc();
+  
+   imc._altura = 1.45;
+  imc._peso = 80;
+
+  imc.calcular_imc();
+  imc.analisar_imc();
+
+
+}
+
+    </code></pre>
+        </div>
+      </div>
+
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Metodologia:</h2>
+        <p class="texto_code">
+          Este código utiliza a programação orientada a objetos (POO) para modelar um sistema de cálculo e análise do
+          Índice de Massa Corporal (IMC) de uma pessoa. A classe Pessoa encapsula atributos como peso, altura e IMC,
+          utilizando getters e setters para controlar o acesso e modificação dos valores. O método calcular_imc realiza
+          o cálculo do IMC com base na fórmula padrão, enquanto o método analisar_imc interpreta o resultado e
+          classifica o IMC em faixas como "Abaixo do peso", "Peso normal", "Sobrepeso" ou "Obesidade". O método
+          principal (main) cria um objeto da classe Pessoa e simula diferentes cenários ao ajustar os valores de peso e
+          altura, demonstrando a funcionalidade da classe e destacando sua eficiência na organização do código. Embora
+          funcional, o código apresenta uma inconsistência no setter do atributo _imc e pode ser aprimorado com
+          validações mais robustas.
+        </p>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------------------ -->
+
+    <div class="codigos_row">
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Códigos:</h2>
+
+        <div class="code">
+          <h3 class="sub_subtitulo"> IPTU</h3>
+          <pre><code>
+class Imovel {
+  //variáveis
+  late double _largura;
+  late double _comprimento;
+  late double _area;
+
+  //setter e getter
+  double get altura => _largura;
+  set altura(double nAltura) => _largura = nAltura;
+
+  double get comprimento => _comprimento;
+  set comprimento(double nComprimento) => _comprimento = nComprimento;
+
+  double get area => _area;
+  set area(double nArea) => _area = nArea;
+
+  //método calculo área
+  void calculo_area() {
+    this._area = this._comprimento * this._largura;
+  }
+
+  void analise_iptu() {
+    if (area <= 50 && area != 0) {
+      print("500");
+    } else if (51 <= area && area < 100) {
+      print("800");
+    } else if (100 <= area && area < 200) {
+      print("1200");
+    } else if (area > 200) {
+      print("2000");
+    } else {
+      print("300");
+    }
+  }
+}
+
+void main() {
+  var iptu = Imovel();
+  iptu._largura = 0;
+  iptu._comprimento = 0;
+
+  iptu.calculo_area();
+  iptu.analise_iptu();
+
+  iptu._largura = 5;
+  iptu._comprimento = 5;
+
+  iptu.calculo_area();
+  iptu.analise_iptu();
+
+  iptu._largura = 3;
+  iptu._comprimento = 30;
+
+  iptu.calculo_area();
+  iptu.analise_iptu();
+
+  iptu._largura = 10;
+  iptu._comprimento = 10;
+
+  iptu.calculo_area();
+  iptu.analise_iptu();
+
+  iptu._largura = 30;
+  iptu._comprimento = 30;
+
+  iptu.calculo_area();
+  iptu.analise_iptu();
+}
+
+    </code></pre>
+        </div>
+      </div>
+
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Metodologia:</h2>
+        <p class="texto_code">
+          Este código utiliza a programação orientada a objetos (POO) para modelar um sistema de cálculo de área e
+          imposto (IPTU) para imóveis. A classe Imovel encapsula atributos como largura, comprimento e área, utilizando
+          getters e setters para controlar o acesso e modificação desses valores. Métodos como calculo_area e
+          analise_iptu são responsáveis por calcular a área do imóvel e determinar o valor do IPTU com base em faixas
+          pré-definidas. O método principal (main) cria um objeto da classe Imovel e simula diferentes cenários ao
+          ajustar as dimensões do imóvel, demonstrando a funcionalidade da classe e destacando sua organização. Embora
+          funcional, o código pode ser aprimorado com validações e nomes mais claros para maior legibilidade e robustez.
+        </p>
+      </div>
+    </div>
+
+    </div>
   </section>
 
-  <footer id="pg_contato">
-      <div class="coluna_footer_um">
-        <p class="texto_padrao"><b>Contato:</b></p>
-        <p class="texto_padrao"><a href="#">Github</a> </p>
-        <p class="texto_padrao">ana.faria.2605@gmail.com</p>
-      </div>
+  <hr class="header_nuvem_cima">
+  <div class="flutter_titulo">
+    <p class="titulo" style="color:black">Flutter</p>
+    <p class="texto_padrao"><a class="link" href="flutter.html">Portfolio de flutter <span>!!</span></a></p>
+  </div>
+  <hr class="header_nuvem_baixo">
 
-      <div class="coluna_footer_dois">
-        <p class="texto_padrao">Feito por: <b>Ana Júlia Faria </b></p>
-        <p class="texto_padrao">2° Módulo desenvolvimento de sistemas</p>
-        <p class="texto_padrao">ETEC Ilza Nascimento Pintus</p>
-      </div>
+
+  <footer id="pg_contato">
+    <div class="coluna_footer_um">
+      <p class="texto_padrao"><b>Contato:</b></p>
+      <p class="texto_padrao"><a href="#">Github</a> </p>
+      <p class="texto_padrao">ana.faria.2605@gmail.com</p>
+    </div>
+
+    <div class="coluna_footer_dois">
+      <p class="texto_padrao">Feito por: <b>Ana Júlia Faria </b></p>
+      <p class="texto_padrao">2° Módulo desenvolvimento de sistemas</p>
+      <p class="texto_padrao">ETEC Ilza Nascimento Pintus</p>
+    </div>
 
   </footer>
 
