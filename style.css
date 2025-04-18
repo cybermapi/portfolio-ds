@@ -204,6 +204,8 @@ body{
     column-gap: 30px;
 
     display: flex;
+    flex-direction: row;
+    
 }
 
 .coluna_codigos {
@@ -221,20 +223,28 @@ body{
     padding-bottom: 10px;
     font-size: 14px;
     height: 320px;
+    width: 550px;
     overflow-y: auto;
-
+    overflow-x: auto;
 }
 
 .texto_code {
     font-family: "Outfit", sans-serif;
     color: white;
     font-size: 17px;
+
 }
 
 .sub_subtitulo {
     font-family: 'Courier New', Courier, monospace;
     color: #5fd169;
     margin-top: 10px;
+}
+
+pre {
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
 }
 
 /* FOOTER */
@@ -270,3 +280,38 @@ footer {
 .texto_padrao b {
     color: #569e56;
 }
+
+/* FLUTTER */
+
+.header_nuvem_cima{
+    background-image: url(./assets/1.png);
+      background-position: top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 250px;
+      border: none;
+    }
+
+    .header_nuvem_baixo{
+        background-image: url(./assets/2.png);
+          background-position: top;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 250px;
+          border: none;
+        }
+
+    .flutter_titulo {
+        background-color: white;
+        text-align: center;
+        height: 200px;
+    }
+
+    .texto_padrao .link {
+        text-decoration: none;
+        color: black;
+        font-size: 30px;
+    }
+    .link span {
+        color:#417e32;
+    }
