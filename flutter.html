@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio DS</title>
+  <link rel="icon" href="/assets/canto.bmp">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Outfit:wght@100..900&display=swap');
+  </style>
+
+</head>
+
+<body>
+
+  <div class="banner">
+    <h1 class="me"> mapi </h1>
+  </div>
+
+
+  <section class="main" id="pg_home">
+
+    <div class="texto_main">
+
+      <h2 class="titulo">
+        Portfolio </h2>
+      <p class="subtitulo">de flutter </p>
+
+      <img src="./assets/icon2.jpg" class="img_me">
+    </div>
+  </section>
+
+
+  <section class="codigos" id="pg_codigos">
+    <div class="codigos_row">
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Códigos:</h2>
+
+        <div class="code">
+          <h3 class="sub_subtitulo"> Função conversor(horas em minutos)</h3>
+          <pre><code>
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Conversor de horas em minutos')),
+
+        body: ConversorForm(),
+      ),
+    );
+  }
+}
+
+class ConversorForm extends StatefulWidget {
+  @override
+  _ConversorFormState createState() => _ConversorFormState();
+}
+
+class _ConversorFormState extends State<ConversorForm> {
+  final TextEditingController _numero1 = TextEditingController();
+
+  String _resultado = '';
+
+  void _converterMinutos() {
+    final double? numero1 = double.tryParse(_numero1.text);
+
+    if (numero1 != null) {
+      final double conversaoMinutos = numero1 * 60;
+
+      setState(() {
+        _resultado = 'Resultado: $conversaoMinutos minutos';
+      });
+    } else {
+      setState(() {
+        _resultado = 'Por favor, insira números válidos.';
+      });
+    }
+  }
+
+  void _converterSegundos() {
+    final double? numero1 = double.tryParse(_numero1.text);
+
+    if (numero1 != null) {
+      final double conversaoSegundos = numero1 * 3600;
+
+      setState(() {
+        _resultado = 'Resultado: $conversaoSegundos segundos';
+      });
+    } else {
+      setState(() {
+        _resultado = 'Por favor, insira números válidos.';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+          TextField(
+            controller: _numero1,
+
+            decoration: InputDecoration(labelText: 'Número 1'),
+
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+          ),
+
+          SizedBox(height: 20),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              ElevatedButton(
+                onPressed: _converterMinutos,
+                child: Text('Minutos'),
+              ),
+
+              SizedBox(width: 20), // Espaçamento entre os botões
+
+              ElevatedButton(
+                onPressed: _converterSegundos,
+                child: Text('Segundos'),
+              ),
+
+              SizedBox(height: 20),              
+            ],
+          ),
+          SizedBox(height:20),
+          
+          Text(_resultado, style: TextStyle(fontSize: 24))
+        ],
+      ),
+    );
+  }
+}
+
+                </code></pre>
+        </div>
+      </div>
+
+      <div class="coluna_codigos">
+        <h2 class="subtitulo"> Metodologia:</h2>
+        <p class="texto_code">
+            <ul>
+                <li><strong>Flutter</strong> – Framework para criação de aplicativos</li>
+                <li><strong>StatelessWidget</strong> – Interface inicial sem estado</li>
+                <li><strong>StatefulWidget</strong> – Gerencia entrada do usuário</li>
+                <li><strong>TextField</strong> – Campo para entrada do valor em horas</li>
+                <li><strong>ElevatedButton</strong> – Botões para conversão</li>
+                <li><strong>SetState</strong> – Atualização dinâmica da interface</li>
+                <li><strong>Conversão de minutos</strong> – Multiplica horas por 60</li>
+                <li><strong>Conversão de segundos</strong> – Multiplica horas por 3600</li>
+                <li><strong>Padding & Column</strong> – Organização visual</li>
+                <li><strong>Interação Usuário</strong> – Interface simples e responsiva</li>
+              </ul>
+        </p>
+      </div>
+    </div>
+<!-- ====================================================== -->
+
+<div class="codigos_row">
+    <div class="coluna_codigos">
+      <h2 class="subtitulo"> Códigos:</h2>
+
+      <div class="code">
+        <h3 class="sub_subtitulo"> Calculadora de idade</h3>
+        <pre><code>
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Calculadora de idade')),
+        body: ConversorForm(),
+      ),
+    );
+  }
+}
+
+class ConversorForm extends StatefulWidget {
+  @override
+  _ConversorFormState createState() => _ConversorFormState();
+}
+
+class _ConversorFormState extends State<ConversorForm> {
+  final TextEditingController _numero1 = TextEditingController();
+  late int anoAtual; // Declaração com `late`, para inicializar posteriormente.
+
+  @override
+  void initState() {
+    super.initState();
+    anoAtual = getAnoAtual(); // Inicialização dentro do `initState`.
+  }
+
+  int getAnoAtual() {
+    DateTime agora = DateTime.now();
+    return agora.year;
+  }
+
+  String _resultado = '';
+
+  //método
+  void _converterIdade() {
+    final double? numero1 = double.tryParse(_numero1.text);
+
+    if (numero1 != null) {
+      final double idade = anoAtual - numero1;
+
+      setState(() {
+        _resultado = 'Resultado: Você tem $idade anos';
+      });
+    } else {
+      setState(() {
+        _resultado = 'Por favor, insira números válidos.';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextField(
+            controller: _numero1,
+            decoration: InputDecoration(labelText: 'Ano de nascimento'),
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: _converterIdade,
+            child: Text('Calcular Idade'),
+          ),
+          SizedBox(height: 20),
+          Text(_resultado, style: TextStyle(fontSize: 24)),
+        ],
+      ),
+    );
+  }
+}
+
+              </code></pre>
+      </div>
+    </div>
+
+    <div class="coluna_codigos">
+      <h2 class="subtitulo"> Metodologia:</h2>
+      <p class="texto_code">
+        <ul>
+            <li><strong>Flutter</strong> – Framework para criação de apps</li>
+            <li><strong>StatelessWidget</strong> – Interface inicial sem estado</li>
+            <li><strong>StatefulWidget</strong> – Gerencia entrada do usuário</li>
+            <li><strong>TextField</strong> – Campo para entrada do ano de nascimento</li>
+            <li><strong>ElevatedButton</strong> – Botão para calcular a idade</li>
+            <li><strong>SetState</strong> – Atualização dinâmica da interface</li>
+            <li><strong>Obtenção do Ano Atual</strong> – Uso da classe `DateTime`</li>
+            <li><strong>Cálculo de Idade</strong> – Subtração do ano de nascimento do ano atual</li>
+            <li><strong>Padding & Column</strong> – Organização visual</li>
+            <li><strong>Interação Usuário</strong> – Interface simples e intuitiva</li>
+          </ul>
+      </p>
+    </div>
+  </div>
+<!-- ============================================================================= -->
+
+<div class="codigos_row">
+    <div class="coluna_codigos">
+      <h2 class="subtitulo"> Códigos:</h2>
+
+      <div class="code">
+        <h3 class="sub_subtitulo"> Calculadora de preço</h3>
+        <pre><code>
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Calculadora de preço')),
+
+        body: SomadorForm(),
+      ),
+    );
+  }
+}
+
+class SomadorForm extends StatefulWidget {
+  @override
+  _SomadorFormState createState() => _SomadorFormState();
+}
+
+class _SomadorFormState extends State<SomadorForm> {
+  final TextEditingController _valorProduto = TextEditingController();
+
+  final TextEditingController _quantidade = TextEditingController();
+
+  String _resultado = '';
+
+  void _calcPreco() {
+    final double? valor = double.tryParse(_valorProduto.text);
+
+    final double? quantidade = double.tryParse(_quantidade.text);
+
+    if (valor != null && quantidade != null) {
+      final double preco = valor * quantidade;
+
+      setState(() {
+        _resultado = 'Resultado: R\$ $preco';
+      });
+    } else {
+      setState(() {
+        _resultado = 'Por favor, insira números válidos.';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+          TextField(
+            controller: _valorProduto,
+
+            decoration: InputDecoration(labelText: 'Valor do produto'),
+
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+          ),
+
+          TextField(
+            controller: _quantidade,
+
+            decoration: InputDecoration(labelText: 'Quantidade do produto'),
+
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+          ),
+
+          SizedBox(height: 20),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              ElevatedButton(onPressed: _calcPreco, child: Text('Calcular')),
+
+              SizedBox(width: 20), // Espaçamento entre os botões
+            ],
+          ),
+
+          SizedBox(height: 20),
+
+          Text(_resultado, style: TextStyle(fontSize: 24)),
+        ],
+      ),
+    );
+  }
+}
+              </code></pre>
+      </div>
+    </div>
+
+    <div class="coluna_codigos">
+      <h2 class="subtitulo"> Metodologia:</h2>
+      <p class="texto_code">
+        <ul>
+            <li><strong>Flutter</strong> – Framework para criação de aplicativos</li>
+            <li><strong>StatelessWidget</strong> – Interface sem estado dinâmico</li>
+            <li><strong>StatefulWidget</strong> – Gerencia estado das entradas do usuário</li>
+            <li><strong>TextField</strong> – Campos para entrada de valores</li>
+            <li><strong>ElevatedButton</strong> – Botão para acionar o cálculo</li>
+            <li><strong>SetState</strong> – Atualização dinâmica da interface</li>
+            <li><strong>Cálculo de preço</strong> – Multiplica valor unitário pela quantidade</li>
+            <li><strong>Padding & Column</strong> – Organização visual</li>
+            <li><strong>Interação Usuário</strong> – Interface intuitiva e responsiva</li>
+      </p>
+    </div>
+  </div>
+
+<!-- ========================================================== -->
+
+<div class="codigos_row">
+    <div class="coluna_codigos">
+      <h2 class="subtitulo"> Códigos:</h2>
+
+      <div class="code">
+        <h3 class="sub_subtitulo"> Calculadora de salário</h3>
+        <pre><code>
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Calculadora de salário')),
+
+        body: SomadorForm(),
+      ),
+    );
+  }
+}
+
+class SomadorForm extends StatefulWidget {
+  @override
+  _SomadorFormState createState() => _SomadorFormState();
+}
+
+class _SomadorFormState extends State<SomadorForm> {
+  final TextEditingController _valorHora = TextEditingController();
+
+  final TextEditingController _qtdFaltas = TextEditingController();
+  
+  final TextEditingController _horasExtras = TextEditingController();
+  
+  String _resultado = '';
+
+  void _salario() {
+    final double? hora = double.tryParse(_valorHora.text);
+
+    if (hora != null) {
+      final double salario = hora * 8 * 30;
+
+      setState(() {
+        _resultado = 'Salário bruto: $salario';
+      });
+    } else {
+      setState(() {
+        _resultado = 'Por favor, insira números válidos.';
+      });
+    }
+  }
+  
+  void _acrescimo() {
+    final double? hora = double.tryParse(_valorHora.text);
+    final double? extra = double.tryParse(_horasExtras.text);
+
+
+    if (hora != null && extra != null) {
+      final double acrescimo = hora * extra;
+
+      setState(() {
+        _resultado = 'Acréscimo salarial: $acrescimo';
+      });
+    } else {
+      setState(() {
+        _resultado = 'Por favor, insira números válidos.';
+      });
+    }
+  }
+  
+  void _desconto() {
+    final double? hora = double.tryParse(_valorHora.text);
+    final double? faltas = double.tryParse(_qtdFaltas.text);
+
+    if (hora != null && faltas != null) {
+      final double descontos = hora * faltas * 8; //valor da hora x dias de falta x 8 horas de trabalho
+
+      setState(() {
+        _resultado = 'Descontos: $descontos';
+      });
+    } else {
+      setState(() {
+        _resultado = 'Por favor, insira números válidos.';
+      });
+    }
+  }
+  
+  void _salarioFinal() {
+    final double? hora = double.tryParse(_valorHora.text);
+    final double? faltas = double.tryParse(_qtdFaltas.text);
+    final double? extra = double.tryParse(_horasExtras.text);
+
+    if (hora != null && faltas !=null && extra != null) {
+      final double salario = (hora * 8 * 30) - (hora * faltas * 8) + (hora * extra);
+
+      setState(() {
+        _resultado = 'Salário líquido: $salario';
+      });
+    } else {
+      setState(() {
+        _resultado = 'Por favor, insira números válidos.';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+          TextField(
+            controller: _valorHora,
+
+            decoration: InputDecoration(labelText: 'Valor da hora'),
+
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+          ),
+
+          TextField(
+            controller: _horasExtras,
+
+            decoration: InputDecoration(labelText: 'Horas extras'),
+
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+          ),
+          
+          TextField(
+            controller: _qtdFaltas,
+
+            decoration: InputDecoration(labelText: 'Quantidade de faltas'),
+
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+          ),
+
+          SizedBox(height: 20),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              ElevatedButton(onPressed: _salario, child: Text('Salario bruto')),
+
+              SizedBox(width: 20), // Espaçamento entre os botões
+              
+              ElevatedButton(onPressed: _acrescimo, child: Text('Acréscimo salarial')),
+              
+              SizedBox(width: 20),
+              
+              ElevatedButton(onPressed: _desconto, child: Text('Desconto salarial')),
+              
+              SizedBox(width: 20),
+              
+              ElevatedButton(onPressed: _salarioFinal, child: Text('Salário líquido')),
+              
+              SizedBox(width: 20),
+              
+              
+            ],
+          ),
+
+          SizedBox(height: 20),
+
+          Text(_resultado, style: TextStyle(fontSize: 24)),
+        ],
+      ),
+    );
+  }
+}
+
+              </code></pre>
+      </div>
+    </div>
+
+    <div class="coluna_codigos">
+      <h2 class="subtitulo"> Metodologia:</h2>
+      <p class="texto_code">
+        <ul>
+            <li><strong>Flutter</strong> – Framework para criação de apps</li>
+            <li><strong>StatelessWidget</strong> – Interface sem estado dinâmico</li>
+            <li><strong>StatefulWidget</strong> – Gerencia estado das entradas do usuário</li>
+            <li><strong>TextField</strong> – Campos para inserir valores</li>
+            <li><strong>ElevatedButton</strong> – Botões de ação para cálculos</li>
+            <li><strong>SetState</strong> – Atualização dinâmica da interface</li>
+            <li><strong>Cálculo de Salário</strong> – Baseado em valor da hora</li>
+            <li><strong>Padding & Column</strong> – Organização visual</li>
+            <li><strong>Interação Usuário</strong> – Interface intuitiva e responsiva</li>
+      </p>
+    </div>
+  </div>
+
+  <!-- ====================================================== -->
+  <div class="codigos_row">
+    <div class="coluna_codigos">
+      <h2 class="subtitulo"> Códigos:</h2>
+
+      <div class="code">
+        <h3 class="sub_subtitulo"> Listview customizado</h3>
+        <pre><code>
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<dynamic> data = [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874",
+        "geo": {"lat": "-37.3159", "lng": "81.1496"},
+      },
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "company": {
+        "name": "Romaguera-Crona",
+        "catchPhrase": "Multi-layered client-server neural-net",
+        "bs": "harness real-time e-markets",
+      },
+    },
+
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv",
+      "address": {
+        "street": "Victor Plains",
+        "suite": "Suite 879",
+        "city": "Wisokyburgh",
+        "zipcode": "90566-7771",
+        "geo": {"lat": "-43.9509", "lng": "-34.4618"},
+      },
+      "phone": "010-692-6593 x09125",
+      "website": "anastasia.net",
+      "company": {
+        "name": "Deckow-Crist",
+        "catchPhrase": "Proactive didactic contingency",
+        "bs": "synergize scalable supply-chains",
+      },
+    },
+
+    {
+      "id": 3,
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "Nathan@yesenia.net",
+      "address": {
+        "street": "Douglas Extension",
+        "suite": "Suite 847",
+        "city": "McKenziehaven",
+        "zipcode": "59590-4157",
+        "geo": {"lat": "-68.6102", "lng": "-47.0653"},
+      },
+      "phone": "1-463-123-4447",
+      "website": "ramiro.info",
+      "company": {
+        "name": "Romaguera-Jacobson",
+        "catchPhrase": "Face to face bifurcated interface",
+        "bs": "e-enable strategic applications",
+      },
+    },
+    {
+      "id": 4,
+      "name": "Patricia Lebsack",
+      "username": "Karianne",
+      "email": "Julianne.OConner@kory.org",
+      "address": {
+        "street": "Hoeger Mall",
+        "suite": "Apt. 692",
+        "city": "South Elvis",
+        "zipcode": "53919-4257",
+        "geo": {"lat": "29.4572", "lng": "-164.2990"},
+      },
+      "phone": "493-170-9623 x156",
+      "website": "kale.biz",
+      "company": {
+        "name": "Robel-Corkery",
+        "catchPhrase": "Multi-tiered zero tolerance productivity",
+        "bs": "transition cutting-edge web services",
+      },
+    },
+
+    {
+      "id": 5,
+      "name": "Chelsey Dietrich",
+      "username": "Kamren",
+      "email": "Lucio_Hettinger@annie.ca",
+      "address": {
+        "street": "Skiles Walks",
+        "suite": "Suite 351",
+        "city": "Roscoeview",
+        "zipcode": "33263",
+        "geo": {"lat": "-31.8129", "lng": "62.5342"},
+      },
+      "phone": "(254)954-1289",
+      "website": "demarco.info",
+      "company": {
+        "name": "Keebler LLC",
+        "catchPhrase": "User-centric fault-tolerant solution",
+        "bs": "revolutionize end-to-end systems",
+      },
+    },
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'LISTVIEW CUSTOMIZADO',
+      home: Scaffold(
+        appBar: AppBar(title: const Text('LISTVIEW CUSTOMIZADO')),
+        body: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) {
+            final item = data[index];
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: (index % 2 == 0 ? Colors.blue : Colors.blue[200]),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item['name'],
+                        style: const TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      const SizedBox(height: 8.0),
+                      Text(
+                        item['email'],
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
+
+                      const SizedBox(height: 8.0),
+                      Text(
+                        item['address']['city'],
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                        children: [
+                          Text(
+                           "Latitude:",
+                            style: const TextStyle(fontSize: 16.0,
+                                                  fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                           item['address']['geo']['lat'],
+                            style: const TextStyle(fontSize: 16.0,
+                                                  ),
+                          ),
+                                 SizedBox(width: 20), // Espaçamento entre os botões
+                           Text(
+                           "Longitude:",
+                            style: const TextStyle(fontSize: 16.0,
+                                                  fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            item['address']['geo']['lng'],
+                            style: const TextStyle(fontSize: 16.0),
+                          )
+                        ],
+                      ),
+                      Row (
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      
+                      children: [
+                        Text (
+                        "Company:",
+                          style:const TextStyle(fontSize: 16.0,
+                                               fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                        item['company']['name'],
+                        style:const TextStyle(fontSize: 16.0),
+                        ),
+                        SizedBox(width:20),
+                        
+                        Text(
+                        "Site:",
+                        style:const TextStyle(fontSize: 16.0,
+                                             fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                        item['website'],
+                        style:const TextStyle(fontSize: 16.0),
+                        ),
+                        Text(
+                        "Phone:",
+                        style:const TextStyle(fontSize:16.0,
+                                              fontWeight: FontWeight.bold)
+                        ),
+                        Text (
+                        item['phone'],
+                        style: const TextStyle(fontSize: 16.0)
+                        )
+                        
+                      ]
+                      )
+                      
+                      
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+              </code></pre>
+      </div>
+    </div>
+
+    <div class="coluna_codigos">
+      <h2 class="subtitulo"> Metodologia:</h2>
+      <p class="texto_code">
+        <ul>
+            <li><strong>Flutter</strong> – Framework para desenvolvimento de apps</li>
+            <li><strong>StatefulWidget</strong> – Gerencia estado dinâmico</li>
+            <li><strong>ListView.builder</strong> – Gera a lista de itens dinamicamente</li>
+            <li><strong>Container</strong> – Personalização visual</li>
+            <li><strong>Padding</strong> – Espaçamento entre elementos</li>
+            <li><strong>Row & Column</strong> – Organização dos textos</li>
+            <li><strong>JSON-like data</strong> – Estrutura dos usuários</li>
+            <li><strong>Interação visual</strong> – Alternância de cores entre itens</li>
+          </ul>
+          
+      </p>
+    </div>
+  </div>
+  </section>
+
+  <footer id="pg_contato">
+    <div class="coluna_footer_um">
+      <p class="texto_padrao"><b>Contato:</b></p>
+      <p class="texto_padrao"><a href="https://github.com/cybermapi" target="_blank">Github</a> </p>
+      <p class="texto_padrao">ana.faria.2605@gmail.com</p>
+    </div>
+
+    <div class="coluna_footer_dois">
+      <p class="texto_padrao">Feito por: <b>Ana Júlia Faria </b></p>
+      <p class="texto_padrao">2° Módulo desenvolvimento de sistemas</p>
+      <p class="texto_padrao">ETEC Ilza Nascimento Pintus</p>
+    </div>
+
+  </footer>
+
+</body>
+</html>
